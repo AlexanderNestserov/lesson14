@@ -1,49 +1,37 @@
 'use strict';
 
-const DomElement = function (selector) {
-   this.selector = selector;
+let a = document.querySelector('button');
 
-};
-DomElement.prototype.setElem = function () {
-   let a = this.selector.split('');
-   if (a[0] == '.') {
-      document.body.appendChild(document.createElement('div'));
-      let с = document.getElementsByTagName('div')[0];
-      с.classList.add(this.selector.substr(1, this.selector.length));
-      с.innerText = 'привет, это див с классом ' + this.selector.substr(1, this.selector.length);
-      с.style.cssText = `height: 200px;
-      width: 300px;
-    background: red;
-    font-size: 32px;
-    `;
+alert('Push the button ' + a.textContent);
+
+class First {
+   constructor() {
+
    }
-   else if (a[0] == '#') {
-      document.body.appendChild(document.createElement('p'));
-      let n = document.getElementsByTagName('p')[0];
-      n.id = this.selector.substr(1, this.selector.length);
-      n.innerText = 'привет, это <p> с id ' + this.selector.substr(1, this.selector.length);
-      n.style.cssText = `height: 200px;
-      width: 300px;
-    background: yellow;
-    font-size: 32px;
-    `;
+   hello() {
+      console.log(`Привет, я метод родителя!`);
    }
-   console.log(document);
-};
+}
 
-const CreateDomElement = function (selector, height, width, bg, fontSize) {
-   DomElement.call(this, selector);
-   this.height = height;
-   this.width = width;
-   this.bg = bg;
-   this.fontSize = fontSize;
-};
+class Second extends First {
+   hello() {
+      super.hello();
+      console.log(`А я наследуемый метод!`);
+   }
+}
 
-CreateDomElement.prototype = Object.create(DomElement.prototype);
-CreateDomElement.prototype.constructor = CreateDomElement;
+const sec = new Second();
 
-const newCreateDomElement = new CreateDomElement(prompt('введите имя класса или id'), '200px', '300px', 'red', '32px');
+a.addEventListener('click', sec.hello);
 
-newCreateDomElement.setElem();
 
-console.log(newCreateDomElement);
+
+
+/*Метод Фейнмана:
+Было тяжело,интересно, но все же:
+самое важное, что я вынес в данный момент-это то, что любую задачу любой профессии, для упрощения и быстроты, нужно решать с помощью алгоритмов(они бывают разные), правильность и быстрота выполнения задачи зависят сугубо от профессионалаизма и опыта разработчика данного алгоритма. Любая задача разбивается на подзадачи(и так до самых примитивных задач).Затем решаются все примитивные подзадачи, собираются в один "документ" и связываются между собой для окончательного завершения выполнения.
+   Научился работать с GIT  -программой контроля версий, для удобства работы в команде.(команды init, add,commit,checkout,merge,push,pull).
+   Обновил знания по функциональному JS - типы данных, циклы, операторы , функции, циклы, замыкания, работа с объектами, массивами, датами, функциями.
+   Получил фундаментальные знания по ООП. (инкапсуляция,наследование, полиморфизм).
+   Научился отличать let от var, определять назначение use strict.
+   Научился работать с объектами, прототипами, конструкторами, классами, событиями , This, стрелочными функциями,LocalStorage & Cookies, связывать элементы DOM  JS с HTML и CSS.*/
