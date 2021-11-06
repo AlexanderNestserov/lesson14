@@ -1,0 +1,24 @@
+{
+  "name": "lesson-18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch":"webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderNestserov/lesson14.git"
+  },
+  "author": "Alex Nesterov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderNestserov/lesson14/issues"
+  },
+  "homepage": "https://github.com/AlexanderNestserov/lesson14#readme",
+  "devDependencies": {
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
+  }
+}
